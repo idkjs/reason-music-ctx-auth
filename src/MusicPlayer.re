@@ -7,19 +7,16 @@ external jazzyfrenchy: string = "default";
 let initialState: SharedTypes.state = {
   tracks: [|
     {name: "Benjamin Tissot - GoingHigher", file: goinghigher},
-    {name: "Benjamin Tissot - JazzyRrenchy", file: jazzyfrenchy},
+    {name: "Benjamin Tissot - JazzyFrenchy", file: jazzyfrenchy},
     {name: "Benjamin Tissot - Summer", file: summer},
   |],
   playing: NotPlaying,
-  user: Anonymous,
   audioPlayer: JsAudio.(make("")),
 };
 
 type action =
   | PauseTrack // (A)
-  | PlayTrack(int)
-  | UserLoggedIn(string)
-  | UserLoggedOut;
+  | PlayTrack(int);
 
 // when we pause a track, we need to transition to
 // the `NotPlaying` state
@@ -44,8 +41,6 @@ let reducer = (state: SharedTypes.state, action) =>
   // (A)
   | PauseTrack => withPauseTrack(state)
   | PlayTrack(index) => withPlayTrack(state, index)
-  | UserLoggedIn(userName) => {...state, user: LoggedIn(userName)}
-  | UserLoggedOut => {...state, user: Anonymous}
   };
 
 let musicPlayerContext = React.createContext((initialState, ignore));

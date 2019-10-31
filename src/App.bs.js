@@ -1,28 +1,29 @@
 
 
 import * as React from "react";
-import * as Header$ReasonMusicCtx from "./Header.bs.js";
-import * as TrackList$ReasonMusicCtx from "./TrackList.bs.js";
-import * as MusicPlayer$ReasonMusicCtx from "./MusicPlayer.bs.js";
-import * as PlayerControls$ReasonMusicCtx from "./PlayerControls.bs.js";
+import * as Home$ReasonMusicCtx from "./auth/Home.bs.js";
+import * as UserContext$ReasonMusicCtx from "./auth/UserContext.bs.js";
+
+function reducer(param, action) {
+  if (action) {
+    return /* record */[/* user : LoggedIn */[action[0]]];
+  } else {
+    return /* record */[/* user : Anonymous */0];
+  }
+}
 
 function App(Props) {
-  return React.createElement("div", {
-              className: "section is-fullheignt"
-            }, React.createElement("div", {
-                  className: "container"
-                }, React.createElement("div", {
-                      className: "column is-6 is-offset-4"
-                    }, React.createElement("h1", {
-                          className: "is-size-2 has-text-centered"
-                        }, "Reason Music Player"), React.createElement("br", undefined), React.createElement(MusicPlayer$ReasonMusicCtx.make, {
-                          children: null
-                        }, React.createElement(Header$ReasonMusicCtx.make, { }), React.createElement(TrackList$ReasonMusicCtx.make, { }), React.createElement(PlayerControls$ReasonMusicCtx.make, { })))));
+  var match = React.useReducer(reducer, /* record */[/* user : Anonymous */0]);
+  return React.createElement(UserContext$ReasonMusicCtx.Provider.make, UserContext$ReasonMusicCtx.Provider.makeProps(/* tuple */[
+                  match[0][/* user */0],
+                  match[1]
+                ], React.createElement(Home$ReasonMusicCtx.make, { }), /* () */0));
 }
 
 var make = App;
 
 export {
+  reducer ,
   make ,
   
 }

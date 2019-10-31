@@ -3,6 +3,7 @@
 import * as $$Array from "bs-platform/lib/es6/array.js";
 import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as React from "react";
+import * as UserContext$ReasonMusicCtx from "./auth/UserContext.bs.js";
 import * as UseMusicPlayer$ReasonMusicCtx from "./useMusicPlayer.bs.js";
 
 function TrackList(Props) {
@@ -10,6 +11,12 @@ function TrackList(Props) {
   var playTrack = match[4];
   var trackList = match[1];
   var playing = match[0];
+  var match$1 = UserContext$ReasonMusicCtx.useUser(/* () */0);
+  var user = match$1[0];
+  var userName = user ? user[0] : "";
+  var greeting = React.createElement("div", {
+        className: "current-track"
+      }, React.createElement("b", undefined, "Play a song, " + (userName + "!")));
   var renderTrackList = function (param) {
     return $$Array.mapi((function (index, track) {
                   var tmp;
@@ -40,7 +47,7 @@ function TrackList(Props) {
                                     }, track[/* name */0])));
                 }), trackList);
   };
-  return React.createElement(React.Fragment, undefined, match[11], match[7] ? renderTrackList(/* () */0) : null);
+  return React.createElement("div", undefined, greeting, renderTrackList(/* () */0));
 }
 
 var make = TrackList;

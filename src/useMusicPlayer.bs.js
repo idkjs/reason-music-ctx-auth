@@ -1,6 +1,5 @@
 
 
-import * as Block from "bs-platform/lib/es6/block.js";
 import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as React from "react";
 import * as Caml_array from "bs-platform/lib/es6/caml_array.js";
@@ -13,18 +12,9 @@ function useMusicPlayer(param) {
   var state = match[0];
   var playing = state[/* playing */1];
   var trackList = state[/* tracks */0];
-  var user = state[/* user */2];
-  var renderSignIn = user ? "Play as song, " + (user[0] + "!") : "Please sign in";
-  var isLoggedIn = user ? true : false;
   var currentTrackName = playing ? Caml_array.caml_array_get(state[/* tracks */0], playing[0])[/* name */0] : "Please choose a track to play";
   var pauseTrack = function (param) {
     return Curry._1(dispatch, /* PauseTrack */0);
-  };
-  var signIn = function (string) {
-    return Curry._1(dispatch, /* UserLoggedIn */Block.__(1, [string]));
-  };
-  var signOut = function (param) {
-    return Curry._1(dispatch, /* UserLoggedOut */1);
   };
   var playTrack = function (index) {
     if (playing) {
@@ -32,19 +22,19 @@ function useMusicPlayer(param) {
       if (match) {
         return Curry._1(dispatch, /* PauseTrack */0);
       } else {
-        state[/* audioPlayer */3].pause();
-        return Curry._1(dispatch, /* PlayTrack */Block.__(0, [index]));
+        state[/* audioPlayer */2].pause();
+        return Curry._1(dispatch, /* PlayTrack */[index]);
       }
     } else {
-      return Curry._1(dispatch, /* PlayTrack */Block.__(0, [index]));
+      return Curry._1(dispatch, /* PlayTrack */[index]);
     }
   };
   React.useEffect((function () {
           var match = state[/* playing */1];
           if (match) {
-            state[/* audioPlayer */3].play();
+            state[/* audioPlayer */2].play();
           } else {
-            state[/* audioPlayer */3].pause();
+            state[/* audioPlayer */2].pause();
           }
           return ;
         }), /* array */[state[/* playing */1]]);
@@ -70,12 +60,7 @@ function useMusicPlayer(param) {
           pauseTrack,
           playTrack,
           playPreviousTrack,
-          playNextTrack,
-          isLoggedIn,
-          user,
-          signIn,
-          signOut,
-          renderSignIn
+          playNextTrack
         ];
 }
 

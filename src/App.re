@@ -1,15 +1,16 @@
-open ReactUtils; // (A)
+open AuthTypes;
+type state = {user};
+
+let reducer = (_, action) =>
+  switch (action) {
+  | UserLoggedIn(userName) => {user: LoggedIn(userName)}
+  | UserLoggedOut => {user: Anonymous}
+  };
 
 [@react.component]
-let make = () =>
-  <div className="section is-fullheignt">
-    <div className="container">
-      <div className="column is-6 is-offset-4">
-        <h1 className="is-size-2 has-text-centered">
-           {s("Reason Music Player")} </h1> // (A)
-        <br />
-        <MusicPlayer> <Header /> <TrackList /> <PlayerControls /> </MusicPlayer>
-      </div>
-    </div>
-  </div>;
-
+let make = () => {
+  let (state, dispatch) = React.useReducer(reducer, {user: Anonymous});
+  <UserContext.Provider value=(state.user, dispatch)>
+    <Home />
+  </UserContext.Provider>;
+};

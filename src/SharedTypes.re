@@ -11,10 +11,11 @@ type playing =
 type user =
   | Anonymous
   | LoggedIn(string);
-
+type userAction =
+  | UserLoggedIn(string)
+  | UserLoggedOut;
 type state = {
   tracks: musicTracks,
   playing,
-  user,
   audioPlayer: JsAudio.audio,
 };
