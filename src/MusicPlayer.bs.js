@@ -1,30 +1,81 @@
 
 
 import * as React from "react";
+import * as Caml_array from "bs-platform/lib/es6/caml_array.js";
+import * as BensoundSummerMp3 from "./bensound-summer.mp3";
+import * as BensoundGoinghigherMp3 from "./bensound-goinghigher.mp3";
+import * as BensoundJazzyfrenchyMp3 from "./bensound-jazzyfrenchy.mp3";
+
+var goinghigher = BensoundGoinghigherMp3.default;
+
+var jazzyfrenchy = BensoundJazzyfrenchyMp3.default;
+
+var summer = BensoundSummerMp3.default;
 
 var initialState_000 = /* tracks : array */[
   /* record */[
+    /* name */"Benjamin Tissot - GoingHigher",
+    /* file */goinghigher
+  ],
+  /* record */[
+    /* name */"Benjamin Tissot - JazzyRrenchy",
+    /* file */jazzyfrenchy
+  ],
+  /* record */[
     /* name */"Benjamin Tissot - Summer",
-    /* file */"summer"
-  ],
-  /* record */[
-    /* name */"Benjamin Tissot - Ukulele",
-    /* file */"ukulele"
-  ],
-  /* record */[
-    /* name */"Benjamin Tissot - Creative Minds",
-    /* file */"creativeminds"
+    /* file */summer
   ]
 ];
+
+var initialState_003 = /* audioPlayer */new Audio("");
 
 var initialState = /* record */[
   initialState_000,
   /* playing : NotPlaying */0,
-  /* user : Anonymous */0
+  /* user : Anonymous */0,
+  initialState_003
 ];
 
+function withPauseTrack(state) {
+  return /* record */[
+          /* tracks */state[/* tracks */0],
+          /* playing : NotPlaying */0,
+          /* user */state[/* user */2],
+          /* audioPlayer */state[/* audioPlayer */3]
+        ];
+}
+
+function withPlayTrack(state, index) {
+  return /* record */[
+          /* tracks */state[/* tracks */0],
+          /* playing : Playing */[index],
+          /* user */state[/* user */2],
+          /* audioPlayer */new Audio(Caml_array.caml_array_get(state[/* tracks */0], index)[/* file */1])
+        ];
+}
+
 function reducer(state, action) {
-  return state;
+  if (typeof action === "number") {
+    if (action === /* PauseTrack */0) {
+      return withPauseTrack(state);
+    } else {
+      return /* record */[
+              /* tracks */state[/* tracks */0],
+              /* playing */state[/* playing */1],
+              /* user : Anonymous */0,
+              /* audioPlayer */state[/* audioPlayer */3]
+            ];
+    }
+  } else if (action.tag) {
+    return /* record */[
+            /* tracks */state[/* tracks */0],
+            /* playing */state[/* playing */1],
+            /* user : LoggedIn */[action[0]],
+            /* audioPlayer */state[/* audioPlayer */3]
+          ];
+  } else {
+    return withPlayTrack(state, action[0]);
+  }
 }
 
 var musicPlayerContext = React.createContext(/* tuple */[
@@ -57,11 +108,16 @@ function MusicPlayer(Props) {
 var make$1 = MusicPlayer;
 
 export {
+  goinghigher ,
+  jazzyfrenchy ,
+  summer ,
   initialState ,
+  withPauseTrack ,
+  withPlayTrack ,
   reducer ,
   musicPlayerContext ,
   MusicPlayerProvider ,
   make$1 as make,
   
 }
-/* musicPlayerContext Not a pure module */
+/* goinghigher Not a pure module */

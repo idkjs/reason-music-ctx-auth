@@ -8,6 +8,7 @@ let make = () =>
         <h1 className="is-size-2 has-text-centered">
            {s("Reason Music Player")} </h1> // (A)
         <br />
+        <MusicPlayer> <Header /> <TrackList /> <PlayerControls /> </MusicPlayer>
       </div>
     </div>
   </div>;

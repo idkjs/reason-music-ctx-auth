@@ -16,4 +16,5 @@ type state = {
   tracks: musicTracks,
   playing,
   user,
+  audioPlayer: JsAudio.audio,
 };
