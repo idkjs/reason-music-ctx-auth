@@ -6,7 +6,7 @@ type userData = {
 };
 type user =
   | Anonymous
-  | LoggedIn(string);
+  | LoggedIn(userData);
 type userAction =
   | UserLoggedIn(userData)
   | UserLoggedOut;

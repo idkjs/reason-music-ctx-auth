@@ -3,6 +3,8 @@
 import * as $$Array from "bs-platform/lib/es6/array.js";
 import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as React from "react";
+import * as Belt_Option from "bs-platform/lib/es6/belt_Option.js";
+import * as Caml_option from "bs-platform/lib/es6/caml_option.js";
 import * as UserContext$ReasonMusicCtx from "./auth/UserContext.bs.js";
 import * as UseMusicPlayer$ReasonMusicCtx from "./useMusicPlayer.bs.js";
 
@@ -13,7 +15,7 @@ function TrackList(Props) {
   var playing = match[0];
   var match$1 = UserContext$ReasonMusicCtx.useUser(/* () */0);
   var user = match$1[0];
-  var userName = user ? user[0] : "";
+  var userName = user ? Belt_Option.getWithDefault(Caml_option.nullable_to_opt(user[0][/* username */1]), "") : "";
   var greeting = React.createElement("div", {
         className: "current-track"
       }, React.createElement("b", undefined, "Play a song, " + (userName + "!")));

@@ -5,7 +5,7 @@ let make = () => {
   let (user, _) = UserContext.useUser();
   let isLoggedIn =
     switch (user) {
-    | LoggedIn(_string) => true
+    | LoggedIn(_) => true
     | Anonymous => false
     };
   <div className="section is-fullheignt">

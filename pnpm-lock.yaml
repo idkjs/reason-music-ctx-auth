@@ -1,4 +1,5 @@
 dependencies:
+  aws-amplify: 1.2.4
   react: 16.11.0
   react-dom: 16.11.0_react@16.11.0
   reason-react: 0.7.0
@@ -13,6 +14,136 @@ devDependencies:
   webpack-dev-server: 3.9.0_webpack@4.41.2
 lockfileVersion: 5.1
 packages:
+  /@aws-amplify/analytics/1.3.4:
+    dependencies:
+      '@aws-amplify/cache': 1.1.4
+      '@aws-amplify/core': 1.2.4
+      uuid: 3.3.3
+    dev: false
+    resolution:
+      integrity: sha512-ZRDAuoeHckMBHMjCHo3Agnw3TRuKCy8MPI2UPavKLjr1iPG37NuxGSBEnwQC8NW+lmzIEpmYurON+pEdqP+iiQ==
+  /@aws-amplify/api/1.2.4:
+    dependencies:
+      '@aws-amplify/auth': 1.5.0
+      '@aws-amplify/cache': 1.1.4
+      '@aws-amplify/core': 1.2.4
+      '@types/zen-observable': 0.5.4
+      axios: 0.19.0
+      graphql: 14.0.0
+      uuid: 3.3.3
+      zen-observable: 0.8.14
+    dev: false
+    resolution:
+      integrity: sha512-dyrTz4KaQek1O0Uh/Jf5QBoM72UN8RcOQG/x6FwMyTBuadArqAgUO8UOydSfkjOHxHPGNjn+Bl0tiW6GsapxJg==
+  /@aws-amplify/auth/1.5.0:
+    dependencies:
+      '@aws-amplify/cache': 1.1.4
+      '@aws-amplify/core': 1.2.4
+      amazon-cognito-identity-js: 3.2.0
+      crypto-js: 3.1.9-1
+    dev: false
+    resolution:
+      integrity: sha512-dTk+5a0sTtWHGMbx575QHOFV6fBnDH/PPZinIObdWXA36rPDhxITYzy6ZvfCrOPUMcXEcEFDuqWP3u3kq5tjZA==
+  /@aws-amplify/cache/1.1.4:
+    dependencies:
+      '@aws-amplify/core': 1.2.4
+    dev: false
+    resolution:
+      integrity: sha512-3wlRgY2JEkonwjk0Z8kNmZ0DkfbNxaLkKIMN1s6IXVuTUOrhA89ZeuHcqHRbm7oB1Z0h24wY+B6Ip962y7u77A==
+  /@aws-amplify/core/1.2.4:
+    dependencies:
+      aws-sdk: 2.518.0
+      url: 0.11.0
+    dev: false
+    resolution:
+      integrity: sha512-IMtcA/VREJRnS1GDyuX2yvmdi5wcukBWkwIc3Sm9yHegMz5cwi5wb5vl2xxzQabIbSCeNofcoY0qZ3ocn4JNsg==
+  /@aws-amplify/interactions/1.1.4:
+    dependencies:
+      '@aws-amplify/core': 1.2.4
+    dev: false
+    resolution:
+      integrity: sha512-+f1lVg4expqEjEhfsCU2hW+6ffoyrJ08Q5Ih8QXpLCNlKMqzBgrvpa6jvzRGBghEkpE/T4bZkXcezNQ1cbIi1g==
+  /@aws-amplify/predictions/1.1.4:
+    dependencies:
+      '@aws-amplify/core': 1.2.4
+      '@aws-amplify/storage': 1.2.4
+      '@aws-sdk/eventstream-marshaller': 0.1.0-preview.2
+      '@aws-sdk/util-utf8-node': 0.1.0-preview.1
+      uuid: 3.3.3
+    dev: false
+    resolution:
+      integrity: sha512-XlKki9OQMBUiFrtyDa+PPcMzJaEk3kqosFpb2foW0AcSBzZyAJOrwMxGptUOpAhGQ5tdDSm4UUebtauUiHEI1w==
+  /@aws-amplify/pubsub/1.2.4:
+    dependencies:
+      '@aws-amplify/core': 1.2.4
+      '@types/zen-observable': 0.5.4
+      paho-mqtt: 1.1.0
+      uuid: 3.3.3
+      zen-observable: 0.8.14
+    dev: false
+    resolution:
+      integrity: sha512-oNi6grUNo6p1FdI8jO6Q/nSoTpyqcauMf23MUkyd00bFyegpmShN7+0NhmnJrs8O5uOXyG0AfObnLBIJFQumVg==
+  /@aws-amplify/storage/1.2.4:
+    dependencies:
+      '@aws-amplify/core': 1.2.4
+    dev: false
+    resolution:
+      integrity: sha512-izTORVRX3Y8Zv91YAsxDsiJS5U6801uoJki32f2LL5/DC5Bl1QgEdsJyOc8gtBI5KspfdgP3oYUKNBMxhsdOcA==
+  /@aws-amplify/ui/1.1.3:
+    dev: false
+    resolution:
+      integrity: sha512-XSGsCTJKgrwRTYUjnGIkVhy+pEZ8DiNCxelJyj0mkst7PStqZG+TkaixA/OSFHscRRxTsO2CXFgVGFcgKWLAVA==
+  /@aws-amplify/xr/0.2.4:
+    dependencies:
+      '@aws-amplify/core': 1.2.4
+    dev: false
+    resolution:
+      integrity: sha512-Wj9YOoA/02yCY73rKyPsHn0jkV4GkquWZUz+lYx+pOVXdmDNuFjjcfbaC0ow42VenrECAYKA74I9D9gL2dcY+g==
+  /@aws-crypto/crc32/0.1.0-preview.2:
+    dependencies:
+      tslib: 1.10.0
+    dev: false
+    resolution:
+      integrity: sha512-XtGVJZhBUAWYG1IdpbXviDNjBJqogPVGi7k4xLZoj4FZQ3GKNhSSiaJrBKRGMh0ixd/o/yxKR1Cf0I0y1gPN2A==
+  /@aws-sdk/eventstream-marshaller/0.1.0-preview.2:
+    dependencies:
+      '@aws-crypto/crc32': 0.1.0-preview.2
+      '@aws-sdk/types': 0.1.0-preview.1
+      '@aws-sdk/util-hex-encoding': 0.1.0-preview.1
+      tslib: 1.10.0
+    dev: false
+    resolution:
+      integrity: sha512-StNivqLMGk+6Blp7eBYgLvidD9HEhthzNz7dBBAQPELx3Nd3imodzSvckDw5ZkuWt6ViP+aAl8HgQvJmD71M5Q==
+  /@aws-sdk/is-array-buffer/0.1.0-preview.1:
+    dependencies:
+      tslib: 1.10.0
+    dev: false
+    resolution:
+      integrity: sha512-9Qrr9w6sNX19N0eO7JBYjp86OPcOyjDPe580L5ISDKo7XfuzK20IC2TeGTZ77okhRTsm8rF5UgP9scBu59jwoA==
+  /@aws-sdk/types/0.1.0-preview.1:
+    dev: false
+    resolution:
+      integrity: sha512-CcZpxyN2G0I7+Jyj0om3LafYX7d30JWJAAQ+53Ysjau7jyL/xLMMkLZgniQPV8BMV7uKLXyf4hwu8JSs0Ejb+w==
+  /@aws-sdk/util-buffer-from/0.1.0-preview.1:
+    dependencies:
+      '@aws-sdk/is-array-buffer': 0.1.0-preview.1
+      tslib: 1.10.0
+    dev: false
+    resolution:
+      integrity: sha512-i46iuFQA05+92L/epK7befgoxw6DM38LnaHjHNxRoJeIYUllZvpJst74FRCJ5UvVOaMDvHO3woWG+dY8/KVABw==
+  /@aws-sdk/util-hex-encoding/0.1.0-preview.1:
+    dependencies:
+      tslib: 1.10.0
+    dev: false
+    resolution:
+      integrity: sha512-97ZMVcJpIXwOQN2RntPimav6G5iod/QHEbqGrmaECXyjXzSrexKHRYjpQAtmJ7geZTMsofoRSdj3qZCymjn7Uw==
+  /@aws-sdk/util-utf8-node/0.1.0-preview.1:
+    dependencies:
+      '@aws-sdk/util-buffer-from': 0.1.0-preview.1
+      tslib: 1.10.0
+    dev: false
+    resolution:
+      integrity: sha512-PSUsSJ0nnMPS389f0R3kIVR0BElnEb22Ofj40iO5HCtw9gZ1ot+enFdbOmW4m1e5+ED9U/Hqxqc7QhFWWF4NUQ==
   /@types/events/3.0.0:
     dev: true
     resolution:
@@ -33,6 +164,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-opgSsy+cEF9N8MgaVPnWVtdJ3o4mV2aMHvDq7thkQUFt0EuOHJon4rQpJfhjmNHB+ikl0Cd6WhWIErOyQ+f7tw==
+  /@types/zen-observable/0.5.4:
+    dev: false
+    resolution:
+      integrity: sha512-sW6xN96wUak4tgc89d0tbTg7QDGYhGv5hvQIS6h4mRCd8h2btiZ80loPU8cyLwsBbA4ZeQt0FjvUhJ4rNhdsGg==
   /@webassemblyjs/ast/1.8.5:
     dependencies:
       '@webassemblyjs/helper-module-context': 1.8.5
@@ -210,6 +345,14 @@ packages:
     dev: true
     resolution:
       integrity: sha512-TXtUUEYHuaTEbLZWIKUr5pmBuhDLy+8KYtPYdcV8qC+pOZL+NKqYwvWSRrVXHn+ZmRRAu8vJTAznH7Oag6RVRw==
+  /amazon-cognito-identity-js/3.2.0:
+    dependencies:
+      buffer: 4.9.1
+      crypto-js: 3.1.9-1
+      js-cookie: 2.2.1
+    dev: false
+    resolution:
+      integrity: sha512-JAvKVW8lVCaOFl6H3NpQrwjIsg/6nbKMXwaPATmpbRkS0aVCTjluijsg3jANBKcBByscU5eIyh8l4Vc1+gmRyw==
   /ansi-colors/3.2.4:
     dev: true
     engines:
@@ -348,6 +491,45 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
+  /aws-amplify/1.2.4:
+    dependencies:
+      '@aws-amplify/analytics': 1.3.4
+      '@aws-amplify/api': 1.2.4
+      '@aws-amplify/auth': 1.5.0
+      '@aws-amplify/cache': 1.1.4
+      '@aws-amplify/core': 1.2.4
+      '@aws-amplify/interactions': 1.1.4
+      '@aws-amplify/predictions': 1.1.4
+      '@aws-amplify/pubsub': 1.2.4
+      '@aws-amplify/storage': 1.2.4
+      '@aws-amplify/ui': 1.1.3
+      '@aws-amplify/xr': 0.2.4
+    dev: false
+    resolution:
+      integrity: sha512-HTmjzSVm2B5K6u+dcMmb61fpVJGwJMiVqHx0zNGI1mpzRp/m0TwlY/6f63DNPvhfE5FV0Ze8vSHXpne3VEh5YQ==
+  /aws-sdk/2.518.0:
+    dependencies:
+      buffer: 4.9.1
+      events: 1.1.1
+      ieee754: 1.1.8
+      jmespath: 0.15.0
+      querystring: 0.2.0
+      sax: 1.2.1
+      url: 0.10.3
+      uuid: 3.3.2
+      xml2js: 0.4.19
+    dev: false
+    engines:
+      node: '>= 0.8.0'
+    resolution:
+      integrity: sha512-hwtKKf93TFyd3qugDW54ElpkUXhPe+ArPIHadre6IAFjCJiv08L8DaZKLRyclDnKfTavKe+f/PhdSEYo1QUHiA==
+  /axios/0.19.0:
+    dependencies:
+      follow-redirects: 1.5.10
+      is-buffer: 2.0.4
+    dev: false
+    resolution:
+      integrity: sha512-1uvKqKQta3KBxIz14F2v06AEHZ/dIoeKfbTRkK1E5oqjDnuEerLmYTgJB5AiQZHJcljpg1TuRzdjDR06qNk0DQ==
   /balanced-match/1.0.0:
     dev: true
     resolution:
@@ -367,7 +549,6 @@ packages:
     resolution:
       integrity: sha512-5T6P4xPgpp0YDFvSWwEZ4NoE3aM4QBQXDzmVbraCkFj8zHM+mba8SyqB5DbZWyR7mYHo6Y7BdQo3MoA4m0TeQg==
   /base64-js/1.3.1:
-    dev: true
     resolution:
       integrity: sha512-mLQ4i2QO1ytvGWFWmcngKO//JXAQueZvwEKtjgQFM4jIK0kU+ytMfplL8j+n5mspOfjHwoAg+9yhb7BwAHm36g==
   /batch/0.6.1:
@@ -532,7 +713,6 @@ packages:
       base64-js: 1.3.1
       ieee754: 1.1.13
       isarray: 1.0.0
-    dev: true
     resolution:
       integrity: sha1-bRu2AbB6TvztlwlBMgkwJ8lbwpg=
   /builtin-status-codes/3.0.0:
@@ -896,6 +1076,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-fz4spIh+znjO2VjL+IdhEpRJ3YN6sMzITSBijk6FK2UvTqruSQW+/cCZTSNsMiZNvUeq0CqurF+dAbyiGOY6Wg==
+  /crypto-js/3.1.9-1:
+    dev: false
+    resolution:
+      integrity: sha1-/aGedh/Ad+Af+/3G6f38WeiAbNg=
   /css-select/1.2.0:
     dependencies:
       boolbase: 1.0.0
@@ -923,6 +1107,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==
+  /debug/3.1.0:
+    dependencies:
+      ms: 2.0.0
+    dev: false
+    resolution:
+      integrity: sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==
   /debug/3.2.6:
     dependencies:
       ms: 2.1.2
@@ -1276,6 +1466,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-qerSRB0p+UDEssxTtm6EDKcE7W4OaoisfIMl4CngyEhjpYglocpNg6UEqCvemdGhosAsg4sO2dXJOdyBifPGCg==
+  /events/1.1.1:
+    dev: false
+    engines:
+      node: '>=0.4.x'
+    resolution:
+      integrity: sha1-nr23Y1rQmccNzEwqH1AEKI6L2SQ=
   /events/3.0.0:
     dev: true
     engines:
@@ -1528,6 +1724,14 @@ packages:
     dev: true
     resolution:
       integrity: sha512-3Z4XhFZ3992uIq0XOqb9AreonueSYphE6oYbpt5+3u06JWklbsPkNv3ZKkP9Bz/r+1MWCaMoSQ28P85+1Yc77w==
+  /follow-redirects/1.5.10:
+    dependencies:
+      debug: 3.1.0
+    dev: false
+    engines:
+      node: '>=4.0'
+    resolution:
+      integrity: sha512-0V5l4Cizzvqt5D44aTXbFZz+FtyXV1vrDN6qrelxtfYQKW0KO0W2T/hkE8xvGa/540LkZlkaUjO4ailYTFtHVQ==
   /follow-redirects/1.9.0:
     dependencies:
       debug: 3.2.6
@@ -1722,6 +1926,14 @@ packages:
     dev: true
     resolution:
       integrity: sha512-a30VEBm4PEdx1dRB7MFK7BejejvCvBronbLjht+sHuGYj8PHs7M/5Z+rt5lw551vZ7yfTCj4Vuyy3mSJytDWRQ==
+  /graphql/14.0.0:
+    dependencies:
+      iterall: 1.2.2
+    dev: false
+    engines:
+      node: 6.x || 8.x || >= 10.x
+    resolution:
+      integrity: sha512-HGVcnO6B25YZcSt6ZsH6/N+XkYuPA7yMqJmlJ4JWxWlS4Tr8SHI56R1Ocs8Eor7V7joEZPRXPDH8RRdll1w44Q==
   /handle-thing/2.0.0:
     dev: true
     resolution:
@@ -1972,9 +2184,12 @@ packages:
     resolution:
       integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==
   /ieee754/1.1.13:
-    dev: true
     resolution:
       integrity: sha512-4vf7I2LYV/HaWerSo3XmlMkp5eZ83i+/CDluXi/IGTs/O1sejBNhTtnxzmRZfvOUqj7lZjqHkeTvpgSFDlWZTg==
+  /ieee754/1.1.8:
+    dev: false
+    resolution:
+      integrity: sha1-vjPUCsEO8ZJnAfbwii2G+/0a0+Q=
   /iferr/0.1.5:
     dev: true
     resolution:
@@ -2109,6 +2324,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-NcdALwpXkTm5Zvvbk7owOUSvVvBKDgKP5/ewfXEznmQFfs4ZRmanOeKBTjRVjka3QFoN6XJ+9F3USqfHqTaU5w==
+  /is-buffer/2.0.4:
+    dev: false
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha512-Kq1rokWXOPXWuaMAqZiJW4XxsmD9zGx9q4aePabbn3qCRGedtH7Cm+zV8WETitMfu1wdh+Rvd6w5egwSngUX2A==
   /is-callable/1.1.4:
     dev: true
     engines:
@@ -2286,7 +2507,6 @@ packages:
     resolution:
       integrity: sha1-HxbkqiKwTRM2tmGIpmrzxgDDpm0=
   /isarray/1.0.0:
-    dev: true
     resolution:
       integrity: sha1-u5NdSFgsuhaMBoNJV6VKPgcSTxE=
   /isexe/2.0.0:
@@ -2307,6 +2527,20 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
+  /iterall/1.2.2:
+    dev: false
+    resolution:
+      integrity: sha512-yynBb1g+RFUPY64fTrFv7nsjRrENBQJaX2UL+2Szc9REFrSNm1rpSXHGzhmAy7a9uv3vlvgBlXnf9RqmPH1/DA==
+  /jmespath/0.15.0:
+    dev: false
+    engines:
+      node: '>= 0.6.0'
+    resolution:
+      integrity: sha1-o/Iiqarp+Wb10nx5ZRDigJF2Qhc=
+  /js-cookie/2.2.1:
+    dev: false
+    resolution:
+      integrity: sha512-HvdH2LzI/EAZcUwA8+0nKNtWHqS+ZmijLA30RwZA0bo7ToCckjK5MkGhjED9KoRcXO6BaGI3I9UIzSA1FKFPOQ==
   /js-tokens/4.0.0:
     dev: false
     resolution:
@@ -2662,7 +2896,6 @@ packages:
     resolution:
       integrity: sha1-viwAX9oy4LKa8fBdfEszIUxwH5I=
   /ms/2.0.0:
-    dev: true
     resolution:
       integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=
   /ms/2.1.1:
@@ -2978,6 +3211,10 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==
+  /paho-mqtt/1.1.0:
+    dev: false
+    resolution:
+      integrity: sha512-KPbL9KAB0ASvhSDbOrZBaccXS+/s7/LIofbPyERww8hM5Ko71GUJQ6Nmg0BWqj8phAIT8zdf/Sd/RftHU9i2HA==
   /pako/1.0.10:
     dev: true
     resolution:
@@ -3222,7 +3459,6 @@ packages:
     resolution:
       integrity: sha512-oClZI37HvuUJJxSKKrC17bZ9Cu0ZYhEAGPsPUy9KlMUmv9dKX2o77RUmq7f3XjIxbwyGwYzbzQ1L2Ks8sIradQ==
   /punycode/1.3.2:
-    dev: true
     resolution:
       integrity: sha1-llOgNvt8HuQjQvIyXM7v6jkmxI0=
   /punycode/1.4.1:
@@ -3257,7 +3493,6 @@ packages:
     resolution:
       integrity: sha1-nsYfeQSYdXB9aUFFlv2Qek1xHnM=
   /querystring/0.2.0:
-    dev: true
     engines:
       node: '>=0.4.x'
     resolution:
@@ -3529,6 +3764,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
+  /sax/1.2.1:
+    dev: false
+    resolution:
+      integrity: sha1-e45lYZCyKOgaZq6nSEgNgozS03o=
   /scheduler/0.17.0:
     dependencies:
       loose-envify: 1.4.0
@@ -4123,7 +4362,6 @@ packages:
     resolution:
       integrity: sha1-42RqLqTokTEr9+rObPsFOAvAHCE=
   /tslib/1.10.0:
-    dev: true
     resolution:
       integrity: sha512-qOebF53frne81cf0S9B41ByenJ3/IuH8yJKngAX35CmiZySA0khhkovshKK+jGCaMnVomla7gVlIcc3EvKPbTQ==
   /tty-browserify/0.0.0:
@@ -4224,11 +4462,17 @@ packages:
     dev: true
     resolution:
       integrity: sha512-d3uaVyzDB9tQoSXFvuSUNFibTd9zxd2bkVrDRvF5TmvWWQwqE4lgYJ5m+x1DbecWkw+LK4RNl2CU1hHuOKPVlg==
+  /url/0.10.3:
+    dependencies:
+      punycode: 1.3.2
+      querystring: 0.2.0
+    dev: false
+    resolution:
+      integrity: sha1-Ah5NnHcF8hu/N9A861h2dAJ3TGQ=
   /url/0.11.0:
     dependencies:
       punycode: 1.3.2
       querystring: 0.2.0
-    dev: true
     resolution:
       integrity: sha1-ODjpfPxgUh63PFJajlW/3Z4uKPE=
   /use/3.1.1:
@@ -4270,8 +4514,12 @@ packages:
       node: '>= 0.4.0'
     resolution:
       integrity: sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
+  /uuid/3.3.2:
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha512-yXJmeNaw3DnnKAOKJE51sL/ZaYfWJRl1pK9dr19YFCu0ObS231AB1/LbqTKRAQ5kw8A90rA6fr4riOUpTZvQZA==
   /uuid/3.3.3:
-    dev: true
     hasBin: true
     resolution:
       integrity: sha512-pW0No1RGHgzlpHJO1nsVrHKpOEIxkGg1xB+v0ZmdNH5OAeAwzAVrCnI2/6Mtx+Uys6iaylxa+D3g4j63IKKjSQ==
@@ -4502,6 +4750,19 @@ packages:
     dev: true
     resolution:
       integrity: sha512-GIyAXC2cB7LjvpgMt9EKS2ldqr0MTrORaleiOno6TweZ6r3TKtoFQWay/2PceJ3RuBasOHzXNn5Lrw1X0bEjqA==
+  /xml2js/0.4.19:
+    dependencies:
+      sax: 1.2.1
+      xmlbuilder: 9.0.7
+    dev: false
+    resolution:
+      integrity: sha512-esZnJZJOiJR9wWKMyuvSE1y6Dq5LCuJanqhxslH2bxM6duahNZ+HMpCLhBQGZkbX6xRf8x1Y2eJlgt2q3qo49Q==
+  /xmlbuilder/9.0.7:
+    dev: false
+    engines:
+      node: '>=4.0'
+    resolution:
+      integrity: sha1-Ey7mPS7FVlxVfiD0wi35rKaGsQ0=
   /xtend/4.0.2:
     dev: true
     engines:
@@ -4563,7 +4824,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-HG/DWAJa1PAnHT9JAhNa8AbAv3FPaiLzioSjCcmuXXhP8MlpHO5vwls4g4j6n30Z74GVQj8Xa62dWVx1QCGklg==
+  /zen-observable/0.8.14:
+    dev: false
+    resolution:
+      integrity: sha512-kQz39uonEjEESwh+qCi83kcC3rZJGh4mrZW7xjkSQYXkq//JZHTtKo+6yuVloTgMtzsIWOJrjIrKvk/dqm0L5g==
 specifiers:
+  aws-amplify: 1.2.4
   bs-platform: 5.2.1
   concurrently: ^5.0.0
   file-loader: 4.2.0

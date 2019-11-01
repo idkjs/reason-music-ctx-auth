@@ -4,8 +4,8 @@ open ReactUtils;
 [@react.component]
 let make = () => {
   let (user, dispatch) = UserContext.useUser();
-  let (username, setUsername) = React.useState(() => "musicLover");
-  let (password, setPassword) = React.useState(() => "");
+  let (username, setUsername) = React.useState(() => "idkjs");
+  let (password, setPassword) = React.useState(() => "fakejson");
   let handleSignin = () =>
     Js.Promise.(
       Auth.signIn(~username, ~password)
@@ -93,17 +93,13 @@ let make = () => {
           {s("Log in")}
         </button>
       </div>
-      <div className="control">
-        <button type_="submit" className="button is-link">
-          {s("Log in")}
-        </button>
-      </div>
     </form>
-  | LoggedIn(userName) =>
+  | LoggedIn(userData) =>
+  let name = Js.Nullable.toOption(userData.username)->Belt.Option.getWithDefault("");
     <div className="user-form">
       <span className="logged-in">
         {s("Logged in as: ")}
-        <b> {s(userName)} </b>
+        <b> {s(name)} </b>
       </span>
       <div className="control">
         <button

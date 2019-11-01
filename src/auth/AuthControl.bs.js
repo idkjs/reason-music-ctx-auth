@@ -2,6 +2,8 @@
 
 import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as React from "react";
+import * as Belt_Option from "bs-platform/lib/es6/belt_Option.js";
+import * as Caml_option from "bs-platform/lib/es6/caml_option.js";
 import * as Auth$ReasonMusicCtx from "../aws/Auth.bs.js";
 import * as AuthTypes$ReasonMusicCtx from "./AuthTypes.bs.js";
 import * as UserContext$ReasonMusicCtx from "./UserContext.bs.js";
@@ -11,21 +13,22 @@ function AuthControl(Props) {
   var dispatch = match[1];
   var user = match[0];
   var match$1 = React.useState((function () {
-          return "musicLover";
+          return "idkjs";
         }));
   var setUsername = match$1[1];
   var username = match$1[0];
   var match$2 = React.useState((function () {
-          return "";
+          return "fakejson";
         }));
   var setPassword = match$2[1];
   var password = match$2[0];
   if (user) {
+    var name = Belt_Option.getWithDefault(Caml_option.nullable_to_opt(user[0][/* username */1]), "");
     return React.createElement("div", {
                 className: "user-form"
               }, React.createElement("span", {
                     className: "logged-in"
-                  }, "Logged in as: ", React.createElement("b", undefined, user[0])), React.createElement("div", {
+                  }, "Logged in as: ", React.createElement("b", undefined, name)), React.createElement("div", {
                     className: "control"
                   }, React.createElement("button", {
                         className: "button is-link",
@@ -114,11 +117,6 @@ function AuthControl(Props) {
                           }, React.createElement("i", {
                                 className: "fas fa-check"
                               })))), React.createElement("div", {
-                    className: "control"
-                  }, React.createElement("button", {
-                        className: "button is-link",
-                        type: "submit"
-                      }, "Log in")), React.createElement("div", {
                     className: "control"
                   }, React.createElement("button", {
                         className: "button is-link",
