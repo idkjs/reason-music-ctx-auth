@@ -7,3 +7,4 @@ npm-debug.log
 /bundleOutput/
 auth2
 build
+src/aws-exports.js
