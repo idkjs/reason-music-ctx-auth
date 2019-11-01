@@ -24,88 +24,31 @@ external toString: 'a => string = "%identity";
 
 [@react.component]
 let make = () => {
-  let (user, setUser) = React.useState(() => None);
-  let checkUser = () => {
-    Auth.currentUserPoolUser(~userPoolId=Amplify.Config.userPoolId)
-    |> Js.Promise.then_(data => {
-         let userInfo = {
-           username: data##username,
-           attributes: data##attributes,
-         };
-         setUser(_ => Some(userInfo));
-         Js.log(data);
-         Js.log2("userInfo: ", userInfo);
-         Js.Promise.resolve(Belt.Result.Ok(data));
-       })
-    |> Js.Promise.catch(error => {
-         Js.log2("error", error);
-         Js.Promise.resolve(Belt.Result.Error(error));
-       })
-    |> ignore;
-  };
-
-  let signOut = () => {
-    Auth.signOut()
-    |> Js.Promise.then_(data => {
-         Js.log(data);
-         Js.log2("userInfo: ", data);
-         Js.Promise.resolve(Belt.Result.Ok(data));
-       })
-    |> Js.Promise.catch(error => {
-         Js.log2("error", error);
-         Js.Promise.resolve(Belt.Result.Error(error));
-       })
-    |> ignore;
-  };
-  open Hub;
-  let logger = str => Js.log(str);
-  // let fromJs:
-
-  let listener: Hub.cb =
-    data => {
-      Js.log2("listener_hubCallback", data);
-
-      let payload = data->payloadGet;
-      Js.log2("payload", payload->eventGet);
-
-      let event = payload->eventGet;
-      Js.log2("listener_hubCallback_event", event);
-      switch (event) {
-      | "signIn" => logger("profile_logger_msg: user signed in")
-      | "signUp" => logger("profile_logger_msg: user signed up")
-
-      | "signOut" => logger("profile_logger_msg: user signed out")
-
-      | "signIn_failure" => logger("profile_logger_msg: user sign in failed")
-
-      | "configured" =>
-        logger("profile_logger_msg: the Auth module is configured")
-      | _ => logger("unknown error")
-      };
-    };
-  React.useEffect1(
-    () => {
-      checkUser();
-      Hub.listen(Auth, listener);
-      Some(() => Hub.remove(Auth, listener));
-    },
-    [||],
-  );
-
-  // let formType: FormTypes.formType = SignIn;
-  let renderProfile =
+  let (user, dispatch) = UserContext.useUser();
+  let isLoggedIn =
     switch (user) {
-    | Some(user) =>
+    | LoggedIn(user) =>
       <div>
         <h1> "Profile"->React.string </h1>
-        <h2> {"Username: " ++ user.username |> React.string} </h2>
-        <h3> {"Email: " ++ user.attributes.email |> React.string} </h3>
+        <h2>
+          {"Username: "
+           ++ Js.Nullable.toOption(user.username)
+              ->Belt.Option.getWithDefault("")
+           |> React.string}
+        </h2>
+        <h3>
+          {"Email: "
+           ++ Js.Nullable.toOption(user.email)
+              ->Belt.Option.getWithDefault("")
+           |> React.string}
+        </h3>
         // <h4>{"Phone: " ++ user.phone_number|>React.string}</h4>
-        <button onClick={_ => signOut()}>
+        <button onClick={_ => dispatch(UserLoggedOut)}>
           {"Sign Out" |> React.string}
         </button>
       </div>
-    | None => <h1> "No User"->React.string </h1>
+    | Anonymous => <div> <h1> "No User"->React.string </h1> </div>
     };
-  renderProfile;
+
+  isLoggedIn;
 };

@@ -6,7 +6,7 @@ let currentAuthenticatedUser =
   |> Js.Promise.then_(res => Js.Promise.resolve(res));
 // let currentAuthenticatedUser =
 //   _currentAuthenticatedUser()->Utils.result_of_response;
-  // |> Js.Promise.then_(res => Js.Promise.resolve(res));
+// |> Js.Promise.then_(res => Js.Promise.resolve(res));
 // let currentAuthenticatedUser =
 //   _currentAuthenticatedUser()
 //   |> Js.Promise.then_(res => Js.Promise.resolve(res))
@@ -60,20 +60,25 @@ external currentUserPoolUser: (~userPoolId: string) => Js.Promise.t('a) =
 let currentUserPoolUser = (~userPoolId: string) =>
   currentUserPoolUser(~userPoolId)
   |> Js.Promise.then_(res => Js.Promise.resolve(res)) /* }*/ /*   )*/;
-// let signIn = (~username, ~password) => {
-//   let signInValues: Js.Dict.t(Js.Json.t) =
-//     Js.Dict.fromList([
-//       ("username", Js.Json.string(username)),
-//       ("password", Js.Json.string(password)),
-//     ]);
-//   let json = Js.Json.object_(signInValues);
-//   Js.Promise.(
-//     signIn(json)
-//     |> then_(result => {
-//          Js.log2("result", result);
-//          resolve();
-//        })
-//     |> catch(err => {
-//          Js.log2("Error", err);
-//          resolve();
-//        })
+
+let checkUser = () => {
+  currentUserPoolUser(~userPoolId=Amplify.Config.userPoolId)
+  |> Js.Promise.then_(res => Js.Promise.resolve(res))
+  |> Js.Promise.catch(error => {
+       Js.log2("error", error);
+       Js.Promise.resolve(Belt.Result.Error(error));
+     })
+  |> ignore;
+};
+let signOut = () => {
+  signOut()
+  |> Js.Promise.then_(data => {
+       Js.log2("signOut_data: ", data);
+       Js.Promise.resolve(Belt.Result.Ok(data));
+     })
+  |> Js.Promise.catch(error => {
+       Js.log2("error", error);
+       Js.Promise.resolve(Belt.Result.Error(error));
+     })
+  |> ignore;
+};

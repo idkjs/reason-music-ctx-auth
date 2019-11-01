@@ -5,7 +5,7 @@ import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as React from "react";
 import * as Belt_Option from "bs-platform/lib/es6/belt_Option.js";
 import * as Caml_option from "bs-platform/lib/es6/caml_option.js";
-import * as UserContext$ReasonMusicCtx from "./auth/UserContext.bs.js";
+import * as UserContext$ReasonMusicCtx from "../auth/UserContext.bs.js";
 import * as UseMusicPlayer$ReasonMusicCtx from "./useMusicPlayer.bs.js";
 
 function TrackList(Props) {

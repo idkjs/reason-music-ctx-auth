@@ -2,11 +2,11 @@
 
 import * as React from "react";
 import * as Profile2$ReasonMusicCtx from "../hub/Profile2.bs.js";
-import * as TrackList$ReasonMusicCtx from "../TrackList.bs.js";
+import * as TrackList$ReasonMusicCtx from "../musicplayer/TrackList.bs.js";
 import * as AuthControl$ReasonMusicCtx from "./AuthControl.bs.js";
-import * as MusicPlayer$ReasonMusicCtx from "../MusicPlayer.bs.js";
+import * as MusicPlayer$ReasonMusicCtx from "../musicplayer/MusicPlayer.bs.js";
 import * as UserContext$ReasonMusicCtx from "./UserContext.bs.js";
-import * as PlayerControls$ReasonMusicCtx from "../PlayerControls.bs.js";
+import * as PlayerControls$ReasonMusicCtx from "../musicplayer/PlayerControls.bs.js";
 
 function Home(Props) {
   var match = UserContext$ReasonMusicCtx.useUser(/* () */0);
