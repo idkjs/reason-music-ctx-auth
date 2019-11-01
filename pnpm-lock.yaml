@@ -1,4 +1,5 @@
 dependencies:
+  '@aws-amplify/core': 1.2.4
   aws-amplify: 1.2.4
   react: 16.11.0
   react-dom: 16.11.0_react@16.11.0
@@ -4829,6 +4830,7 @@ packages:
     resolution:
       integrity: sha512-kQz39uonEjEESwh+qCi83kcC3rZJGh4mrZW7xjkSQYXkq//JZHTtKo+6yuVloTgMtzsIWOJrjIrKvk/dqm0L5g==
 specifiers:
+  '@aws-amplify/core': 1.2.4
   aws-amplify: 1.2.4
   bs-platform: 5.2.1
   concurrently: ^5.0.0
