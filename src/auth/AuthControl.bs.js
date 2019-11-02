@@ -2,10 +2,7 @@
 
 import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as React from "react";
-import * as Belt_Option from "bs-platform/lib/es6/belt_Option.js";
-import * as Caml_option from "bs-platform/lib/es6/caml_option.js";
 import * as Auth$ReasonMusicCtx from "../aws/Auth.bs.js";
-import * as AuthTypes$ReasonMusicCtx from "./AuthTypes.bs.js";
 import * as UserContext$ReasonMusicCtx from "./UserContext.bs.js";
 
 function AuthControl(Props) {
@@ -23,12 +20,11 @@ function AuthControl(Props) {
   var setPassword = match$2[1];
   var password = match$2[0];
   if (user) {
-    var name = Belt_Option.getWithDefault(Caml_option.nullable_to_opt(user[0][/* username */1]), "");
     return React.createElement("div", {
                 className: "user-form"
               }, React.createElement("span", {
                     className: "logged-in"
-                  }, "Logged in as: ", React.createElement("b", undefined, name)), React.createElement("div", {
+                  }, "Logged in as: ", React.createElement("b", undefined, user[0][/* username */1])), React.createElement("div", {
                     className: "control"
                   }, React.createElement("button", {
                         className: "button is-link",
@@ -41,20 +37,8 @@ function AuthControl(Props) {
                 className: "user-form",
                 onSubmit: (function (e) {
                     e.preventDefault();
-                    Auth$ReasonMusicCtx.signIn(username, password).then((function (res) {
-                              var x = AuthTypes$ReasonMusicCtx.fromJs(res);
-                              var userData_001 = /* username */x[/* username */0];
-                              var userData_002 = /* id */x[/* attributes */1][/* sub */0];
-                              var userData_003 = /* email */x[/* attributes */1][/* email */2];
-                              var userData = /* record */[
-                                /* isLoggedIn */true,
-                                userData_001,
-                                userData_002,
-                                userData_003
-                              ];
+                    Auth$ReasonMusicCtx.signIn(username, password).then((function (_res) {
                               console.log("sign up success!");
-                              console.log(userData);
-                              Curry._1(dispatch, /* UserLoggedIn */[userData]);
                               return Promise.resolve(/* () */0);
                             })).catch((function (err) {
                             console.log(err);

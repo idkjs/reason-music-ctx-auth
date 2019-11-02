@@ -17,7 +17,8 @@ let make = () => {
   let (user, _) = UserContext.useUser();
   let userName =
     switch (user) {
-    | LoggedIn(user) => Js.Nullable.toOption(user.username)->Belt.Option.getWithDefault("");
+    | LoggedIn(user) => user.username;
+    // | LoggedIn(user) => Js.Nullable.toOption(user.username)->Belt.Option.getWithDefault("");
     | Anonymous => ""
     };
   let greeting =

@@ -9,18 +9,18 @@ let make = () => {
   let handleSignin = () =>
     Js.Promise.(
       Auth.signIn(~username, ~password)
-      |> then_(res => {
-           let x = res->AuthTypes.fromJs;
-           let userData:AuthTypes.userData = {
-             isLoggedIn: true,
-             username: Js.Nullable.return(x.username),
-             id: Js.Nullable.return(x.attributes.sub),
-             email: Js.Nullable.return(x.attributes.email),
-           };
+      |> then_(_res => {
+          //  let x = res->AuthTypes.fromJs;
+          //  let userData:AuthTypes.userData = {
+          //    isLoggedIn: true,
+          //    username: Js.Nullable.return(x.username),
+          //    id: Js.Nullable.return(x.attributes.sub),
+          //    email: Js.Nullable.return(x.attributes.email),
+          //  };
            //  let userInfo: AuthTypes.userInfo = {username: user##username, attributes: user##attributes};
            Js.log("sign up success!");
-           Js.log(userData);
-           dispatch(UserLoggedIn(userData));
+          //  Js.log(userData);
+          //  dispatch(UserLoggedIn(userData));
           //  setUser(_ => Some(userInfo));
            //  let formTypeToUpdate: FormTypes.formType = SignUp;
            //  updateFormType(_ => SignUp);
@@ -94,12 +94,12 @@ let make = () => {
         </button>
       </div>
     </form>
-  | LoggedIn(userData) =>
-  let name = Js.Nullable.toOption(userData.username)->Belt.Option.getWithDefault("");
+  | LoggedIn(user) =>
+  // let name = Js.Nullable.toOption(userData.username)->Belt.Option.getWithDefault("");
     <div className="user-form">
       <span className="logged-in">
         {s("Logged in as: ")}
-        <b> {s(name)} </b>
+        <b> {s(user.username)} </b>
       </span>
       <div className="control">
         <button

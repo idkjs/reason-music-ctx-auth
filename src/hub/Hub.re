@@ -1,6 +1,5 @@
-type hub;
-[@bs.module "@aws-amplify/core"] external hub: hub = "Hub";
-
+type t;
+[@bs.module "@aws-amplify/core"] external hub: t = "Hub";
 
 type channel =
   | Core
@@ -26,7 +25,7 @@ let channelToString =
 [@bs.deriving abstract]
 type payload = {
   event: string,
-  data: Js.Json.t,
+  data: CognitoUser.userResponseDecoder,
   message: string,
 };
 [@bs.deriving abstract]
@@ -38,14 +37,12 @@ type hubCapsule = {
 };
 type cb = hubCapsule => unit;
 
-type listen;
-[@bs.send] external listen: (hub, string, cb) => unit = "listen";
-type remove;
-[@bs.send] external remove: (hub, string, cb) => unit = "remove";
+[@bs.send] external _listen: (t, string, cb) => unit = "listen";
+
+[@bs.send] external _remove: (t, string, cb) => unit = "remove";
 
 let listen = (channel, callback) =>
-  listen(hub, channel->channelToString, callback);
-// let channel = channel->channelToString;
+  _listen(hub, channel->channelToString, callback);
 
 let remove = (channel, callback) =>
-  remove(hub, channel->channelToString, callback);
+  _remove(hub, channel->channelToString, callback);

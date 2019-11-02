@@ -2,12 +2,18 @@ module Types = LogrTypes;
 open Types;
 type event = [ | `signIn | `signUp | `signOut | `signIn_failure | `configured];
 
-type payloadJs = {
-  .
-  "event":event,
-  "data": Js.Nullable.t(Js.t({.})),
-  "message": string,
-};
+// type payloadJs = {
+//   .
+//   "event":event,
+//   "data": CognitoUser.userResponseDecoder,
+//   "message": string,
+// };
+// [@bs.deriving abstract]
+// type payload = {
+//   event: string,
+//   data: CognitoUser.userResponseDecoder,
+//   message: string,
+// };
 type t = logger;
 type options;
 [@bs.obj]
@@ -42,7 +48,7 @@ let createLogger = (~name=?, ~level=?, ()) =>
 
 [@bs.send] external log: (t, string, string) => unit = "log";
 [@bs.send] external logO: (t, string, Js.t({..})) => unit = "log";
-[@bs.send] external logO: (t, string, payloadJs) => unit = "log";
+[@bs.send] external logO: (t, string, Hub.payload) => unit = "log";
 let log = (logger, level, message) =>
   log(logger, levelToString(level), message);
 let logO = (logger, level, message) =>
