@@ -5,20 +5,17 @@ let useListerner = () => {
     data => {
       Js.log2("listener_hubCallback", data);
 
-      let payload = data->payloadGet;
-      Js.log2("payload", payload->eventGet);
-
-      let event = payload->eventGet;
+      let event = data->payloadGet->eventGet->eventFromString;
       Js.log2("listener_hubCallback_event", event);
       switch (event) {
-      | "signIn" => logger("profile_logger_msg: user signed in")
-      | "signUp" => logger("profile_logger_msg: user signed up")
+      | SignIn => logger("profile_logger_msg: user signed in")
+      | SignUp => logger("profile_logger_msg: user signed up")
 
-      | "signOut" => logger("profile_logger_msg: user signed out")
+      | SignOut => logger("profile_logger_msg: user signed out")
 
-      | "signIn_failure" => logger("profile_logger_msg: user sign in failed")
+      | SignIn_failure => logger("profile_logger_msg: user sign in failed")
 
-      | "configured" =>
+      | Configured =>
         logger("profile_logger_msg: the Auth module is configured")
       | _ => logger("unknown error")
       };

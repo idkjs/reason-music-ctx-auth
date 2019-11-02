@@ -9,19 +9,12 @@ function loglevel(param) {
   return window.LOG_LEVEL;
 }
 
-window.LOG_LEVEL = "DEBUG";
-
-console.log("loglevel", window.LOG_LEVEL);
-
 Amplify$ReasonMusicCtx.configure(Amplify$ReasonMusicCtx.Config.awsConfig);
 
 ReactDOMRe.renderToElementWithId(React.createElement(App$ReasonMusicCtx.make, { }), "root");
 
-var setLogLevel = /* () */0;
-
 export {
   loglevel ,
-  setLogLevel ,
   
 }
 /*  Not a pure module */

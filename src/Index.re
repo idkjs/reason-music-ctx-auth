@@ -7,8 +7,8 @@ type window;
 [@bs.set] external setLogLevel: (window, string) => unit = "LOG_LEVEL";
 /* this returns the value of `loglevel`! Did not know this syntax */
 let loglevel = () => loglevel;
-let setLogLevel = setLogLevel(window,"DEBUG");
-Js.log2("loglevel", loglevel());
+// let setLogLevel = setLogLevel(window,"DEBUG");
+// Js.log2("loglevel", loglevel());
 Amplify.configure(Amplify.Config.awsConfig);
 
 ReactDOMRe.renderToElementWithId(<App />, "root");

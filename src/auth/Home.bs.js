@@ -1,7 +1,7 @@
 
 
 import * as React from "react";
-import * as Profile2$ReasonMusicCtx from "../hub/Profile2.bs.js";
+import * as Profile$ReasonMusicCtx from "./Profile.bs.js";
 import * as TrackList$ReasonMusicCtx from "../musicplayer/TrackList.bs.js";
 import * as AuthControl$ReasonMusicCtx from "./AuthControl.bs.js";
 import * as MusicPlayer$ReasonMusicCtx from "../musicplayer/MusicPlayer.bs.js";
@@ -20,7 +20,7 @@ function Home(Props) {
                       className: "column is-6 is-offset-4"
                     }, React.createElement("h1", {
                           className: "is-size-2 has-text-centered"
-                        }, "Reason Music Player"), React.createElement(Profile2$ReasonMusicCtx.make, { }), React.createElement("br", undefined), match$1 ? React.createElement("div", undefined, React.createElement("span", {
+                        }, "Reason Music Player"), React.createElement(Profile$ReasonMusicCtx.make, { }), React.createElement("br", undefined), match$1 ? React.createElement("div", undefined, React.createElement("span", {
                                 className: "user-message"
                               }, "Sneaky, you are browsing anonymously!", React.createElement("br", undefined), "Sign in to see the track list."), React.createElement(AuthControl$ReasonMusicCtx.make, { })) : React.createElement("div", undefined, React.createElement(AuthControl$ReasonMusicCtx.make, { }), React.createElement(MusicPlayer$ReasonMusicCtx.make, {
                                 children: null

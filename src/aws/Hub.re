@@ -21,11 +21,40 @@ let channelToString =
   | Pubsub => "pubsub"
   | Storage => "storage"
   | Xr => "xr";
+type event =
+  | SignIn
+  | SignUp
+  | SignOut
+  | SignIn_failure
+  | Configured
+  | Unknown;
 
+let eventFromString =
+  fun
+  | "signIn" => SignIn
+  | "signUp" => SignUp
+  | "signOut" => SignOut
+  | "signIn_failure" => SignIn_failure
+  | "configured" => Configured
+  | _ => Unknown;
+[@bs.deriving abstract]
+type attributes = {
+  sub: int,
+  email_verified: bool,
+  email: string,
+  phone_number: string,
+};
+[@bs.deriving abstract]
+type data = {
+  username: string,
+  [@bs.as "Session"]
+  session: Js.Nullable.t(Js.t({.})),
+  attributes,
+};
 [@bs.deriving abstract]
 type payload = {
   event: string,
-  data: CognitoUser.userResponseDecoder,
+  data,
   message: string,
 };
 [@bs.deriving abstract]

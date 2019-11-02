@@ -14,7 +14,7 @@ let make = () => {
         <h1 className="is-size-2 has-text-centered">
           {s("Reason Music Player")}
         </h1>
-        <Profile2 />
+        <Profile />
         <br />
         {!isLoggedIn
            ? <div>

@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import * as Hub$ReasonMusicCtx from "./Hub.bs.js";
-import * as Auth$ReasonMusicCtx from "../aws/Auth.bs.js";
+import * as Auth$ReasonMusicCtx from "./Auth.bs.js";
 
 function logger(str) {
   console.log(str);
@@ -12,29 +12,28 @@ function logger(str) {
 function useListerner(param) {
   var listener = function (data) {
     console.log("listener_hubCallback", data);
-    var payload = data.payload;
-    console.log("payload", payload.event);
-    var $$event = payload.event;
+    var $$event = Hub$ReasonMusicCtx.eventFromString(data.payload.event);
     console.log("listener_hubCallback_event", $$event);
     switch ($$event) {
-      case "configured" :
-          console.log("profile_logger_msg: the Auth module is configured");
-          return /* () */0;
-      case "signIn" :
+      case /* SignIn */0 :
           console.log("profile_logger_msg: user signed in");
           return /* () */0;
-      case "signIn_failure" :
-          console.log("profile_logger_msg: user sign in failed");
-          return /* () */0;
-      case "signOut" :
-          console.log("profile_logger_msg: user signed out");
-          return /* () */0;
-      case "signUp" :
+      case /* SignUp */1 :
           console.log("profile_logger_msg: user signed up");
           return /* () */0;
-      default:
-        console.log("unknown error");
-        return /* () */0;
+      case /* SignOut */2 :
+          console.log("profile_logger_msg: user signed out");
+          return /* () */0;
+      case /* SignIn_failure */3 :
+          console.log("profile_logger_msg: user sign in failed");
+          return /* () */0;
+      case /* Configured */4 :
+          console.log("profile_logger_msg: the Auth module is configured");
+          return /* () */0;
+      case /* Unknown */5 :
+          console.log("unknown error");
+          return /* () */0;
+      
     }
   };
   React.useEffect((function () {

@@ -2,9 +2,9 @@
 
 import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as React from "react";
-import * as UserContext$ReasonMusicCtx from "../auth/UserContext.bs.js";
+import * as UserContext$ReasonMusicCtx from "./UserContext.bs.js";
 
-function Profile2(Props) {
+function Profile(Props) {
   var match = UserContext$ReasonMusicCtx.useUser(/* () */0);
   var dispatch = match[1];
   var user = match[0];
@@ -20,7 +20,7 @@ function Profile2(Props) {
   }
 }
 
-var make = Profile2;
+var make = Profile;
 
 export {
   make ,

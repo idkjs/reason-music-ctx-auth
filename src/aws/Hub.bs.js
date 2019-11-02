@@ -24,6 +24,23 @@ function channelToString(param) {
   }
 }
 
+function eventFromString(param) {
+  switch (param) {
+    case "configured" :
+        return /* Configured */4;
+    case "signIn" :
+        return /* SignIn */0;
+    case "signIn_failure" :
+        return /* SignIn_failure */3;
+    case "signOut" :
+        return /* SignOut */2;
+    case "signUp" :
+        return /* SignUp */1;
+    default:
+      return /* Unknown */5;
+  }
+}
+
 function listen(channel, callback) {
   Core.Hub.listen(channelToString(channel), callback);
   return /* () */0;
@@ -36,6 +53,7 @@ function remove(channel, callback) {
 
 export {
   channelToString ,
+  eventFromString ,
   listen ,
   remove ,
   

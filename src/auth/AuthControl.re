@@ -95,7 +95,6 @@ let make = () => {
       </div>
     </form>
   | LoggedIn(user) =>
-  // let name = Js.Nullable.toOption(userData.username)->Belt.Option.getWithDefault("");
     <div className="user-form">
       <span className="logged-in">
         {s("Logged in as: ")}

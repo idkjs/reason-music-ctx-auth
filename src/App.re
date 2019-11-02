@@ -1,12 +1,3 @@
-type window;
-
-[@bs.val] external window: window = "window";
-
-[@bs.val] [@bs.scope "window"] external loglevel: string = "LOGLEVEL";
-[@bs.set] external setLogLevel: (window, string) => unit = "LOGLEVEL";
-
-let loglevel = () => loglevel;
-let setLogLevel = setLogLevel(window);
 open AuthTypes;
 type state = {user};
 let reducer = (_, action) =>
@@ -18,7 +9,7 @@ let reducer = (_, action) =>
 [@react.component]
 let make = () => {
   let (state, dispatch) = React.useReducer(reducer, {user: Anonymous});
-  open Logr;
+  open Logger;
   let logr = str => Js.log2(str);
 
   let logger = createLogger(~name="UserProvider", ~level=Info, ());
@@ -26,43 +17,32 @@ let make = () => {
 
   let listener =
     data => {
-      Js.log2("listener_data_appre", data);
-      Logr.log(logger, Info, "listening for auth events...");
-      Logr.logO(logger, Info, data->payloadGet);
-      Logr.info(logger, "listening for auth events...");
-      let payload = data->payloadGet;
-      Js.log2("appre_payload_appre", payload);
-      let cognitoUserJs = payload->dataGet;
-            Js.log2("appre_payloadData_appre", cognitoUserJs);
+      Logger.log(logger, Info, "listening for auth events...");
+      let message = data->payloadGet->messageGet;
+      Logger.info(logger, "listening for auth events...");
+      let userJs = data->payloadGet->dataGet;
 
-      let event = payload->eventGet;
-      let cognitoUser = cognitoUserJs->CognitoUser.userResponsefromJs;
-      Js.log2("appre_cognitoUser_appre", cognitoUser);
-      Js.log2("appre_cognitoUser_appre", cognitoUser.username);
+      let event = data->payloadGet->eventGet->eventFromString;
 
-      Js.log2("appre_payload_event_appre", event);
       switch (event) {
-      | "signIn" =>
-        logr("appre_logr_signIn_event_data", data);
-        let x = cognitoUser;
+      | SignIn =>
+        Logger.logO(logger, Info, message);
+
         let userData: AuthTypes.userData = {
           isLoggedIn: true,
-          username: x.username,
-          id: x.attributes.sub,
-          email: x.attributes.email,
+          username: userJs->usernameGet,
+          id: userJs->attributesGet->subGet,
+          email: userJs->attributesGet->emailGet,
         };
-        logr("userData signed up", userData);
         dispatch(UserLoggedIn(userData));
-      | "signUp" => logr("user signed up", data)
+      | SignUp => Logger.logO(logger, Info, message);
 
-      | "signOut" =>
-        logr("appre_logger_msg: user signed in", payload);
+      | SignOut => Logger.logO(logger, Info, message);
         dispatch(UserLoggedOut);
+      | SignIn_failure =>  Logger.logO(logger, Info, message);
 
-      | "signIn_failure" => logr("user sign in failed", data)
+      | Configured => Logger.logO(logger, Info, message);
 
-      | "configured" =>
-        logr("profile_msg: the Auth module is configured", data)
       | _ => logr("unknown error", data)
       };
     };
